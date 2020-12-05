@@ -1,23 +1,26 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [count, setCount] = useState(() => {
+    console.log('futtatas')
+    return 5
+  })
+
+  function decrementCount(){
+    setCount(prevCount => prevCount - 1)
+  }
+  function hozzaadCount(){
+    setCount(prevCount => prevCount + 1)
+    console.log("hozzaad")
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={decrementCount}>-</button>
+      <span>{count}</span>
+      <button onClick={hozzaadCount}>+</button>
     </div>
   );
 }
